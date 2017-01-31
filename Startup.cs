@@ -1,29 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
 
-namespace StressCore
+public class Startup
 {
-    public class Startup
+    public void Configure(IApplicationBuilder app)
     {
-        public Startup(IHostingEnvironment env)
+        app.Run(async context =>
         {
-        }
+            var bytes = System.Text.Encoding.ASCII.GetBytes("Hello");
+            await context.Response.Body.WriteAsync(bytes, 0, bytes.Length);
+        });
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            app.Run(async context =>
-            {
-                await context.Response.WriteAsync("Hello from TDC");
-            });
-
-        }
     }
 }

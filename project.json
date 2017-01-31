@@ -1,28 +1,34 @@
 {
-  "version": "1.0.0-*",
-  "buildOptions": {
-    "debugType": "portable",
-    "emitEntryPoint": true
-  },
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "platform"
     },
-    "Microsoft.AspNetCore.Hosting":"1.0.0",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0"
+    "Microsoft.AspNetCore.Server.Kestrel": "1.1.0"
   },
   "frameworks": {
-    "netcoreapp1.0": {
-      "imports": [
-        "dotnet5.6",
-        "portable-net45+win8"
-      ]
-    }
+    "netcoreapp1.1": { }
+  },
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
   },
   "runtimeOptions": {
     "configProperties": {
       "System.GC.Server": true
     }
+  },
+  "publishOptions": {
+    "include": [
+      "appsettings.json"
+    ]
+  },
+  "scripts": {
+    "prepublish": [ ],
+    "postpublish": [ ]
+  },
+  "tooling": {
+    "defaultNamespace": "WebApplication"
   }
 }
